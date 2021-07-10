@@ -32,7 +32,7 @@ while(q!=[]):
             # except requests.ConnectionError as exception:
             #     print(" ")
             except ValidationError as exception:
-                webtree.show()
+                webtree.show() # To Show the WebTree in the interval  (in case of big websites) - - You can comment it if you dont want it
                 print("",end="")
         p=q[0]
     except:

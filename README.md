@@ -1,10 +1,8 @@
 # AutomationBots
 
-Two Python automation tools: a recursive web crawler and a WhatsApp message sender.
+A recursive web crawler that discovers all links on a website and builds a site tree. Supports JavaScript-rendered pages.
 
-## Web Crawler
-
-Recursively crawls a website, discovers all links, and builds a site tree. Supports JavaScript-rendered pages.
+## Usage
 
 ```bash
 # Basic crawl (depth 2, same domain only)
@@ -26,46 +24,44 @@ python webcrawler.py https://example.com --output results.json
 python webcrawler.py https://example.com --delay 2
 ```
 
-### JS Rendering Setup
-
-For sites that load content via JavaScript:
-
-```bash
-pip install playwright
-playwright install chromium
-python webcrawler.py https://spa-website.com --js
-```
-
-## WhatsApp Bot
-
-Sends automated messages to contacts via WhatsApp Web.
-
-```bash
-# Edit contacts
-nano contacts.json
-
-# Send default message
-python whatsapp_bot.py
-
-# Custom message
-python whatsapp_bot.py --message "Meeting at 3pm today"
-
-# Custom contacts file
-python whatsapp_bot.py --contacts my_list.json
-```
-
-Scan the QR code when prompted, then messages send automatically.
-
 ## Install
 
 ```bash
 pip install -r requirements.txt
 ```
 
-For JS-rendered crawling:
+For JS-rendered pages:
 ```bash
 pip install playwright
 playwright install chromium
+```
+
+## JS Rendering
+
+Regular websites work out of the box. For single-page apps (React, Vue, Angular) that load content via JavaScript, use the `--js` flag:
+
+```bash
+python webcrawler.py https://spa-website.com --js
+```
+
+This uses Playwright to render the page in a headless browser before extracting links.
+
+## Output
+
+The crawler prints a tree to the terminal and optionally saves full results as JSON:
+
+```json
+{
+  "start_url": "https://example.com",
+  "stats": {"pages_crawled": 149, "links_found": 788, "errors": 0},
+  "pages": {
+    "https://example.com": {
+      "title": "Example",
+      "depth": 0,
+      "children": ["https://example.com/about", "https://example.com/contact"]
+    }
+  }
+}
 ```
 
 ## License

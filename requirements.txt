@@ -2,9 +2,5 @@
 requests==2.31.0
 beautifulsoup4==4.12.2
 
-# Web Crawler (optional: JS rendering)
-# playwright==1.40.0
-
-# WhatsApp Bot
-selenium==4.15.2
-webdriver-manager==4.0.1
+# Optional: JS rendering
+# pip install playwright && playwright install chromium

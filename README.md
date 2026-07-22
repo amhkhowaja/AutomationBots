@@ -1,4 +1,4 @@
-# AutomationBots
+# WebCrawler
 
 A recursive web crawler that discovers all links on a website and builds a site tree. Supports JavaScript-rendered pages.
 
